@@ -14,7 +14,7 @@ struct TemperatureRecord {
 const int MAX_DAYS = 31;
 
 // Function Prototypes
-void readTemperatures(TemperatureRecord, int); // TODO: Fix the parameters
+void readTemperatures(TemperatureRecord arr[], int& size); // TODO: Fix the parameters
 void printTemperatures(const TemperatureRecord, int);
 TemperatureRecord findMin(const TemperatureRecord, int);
 TemperatureRecord findMax(const TemperatureRecord, int);
@@ -23,7 +23,7 @@ double findAverage(const TemperatureRecord, int);
 int main() {
     // TODO: Step 2 - Declare an array of TemperatureRecord structs (MAX_DAYS size)
 
-    TemperatureRecord temp[MAX_DAYS];
+    TemperatureRecord temperatures[MAX_DAYS];
     
     int size = 0;  // Actual number of records read
 
@@ -38,6 +38,19 @@ int main() {
 
 // TODO: Step 6 - Implement readTemperatures()
 // Read from "temps.txt" and store data in the array
+
+void readTemperatures(TemperatureRecord arr[], int& size) {
+    ifstream infile;
+    infile.open("temps.txt");
+    if (!infile.is_open()) {
+        cout << "Error, could not open file." << endl;
+    }
+    cout << "Reading file..." << endl;
+    
+    while ((size < MAX_DAYS) && (infile >> arr[size].day >> arr[size].temperature)) {
+        size++;
+    }
+}
 
 // TODO: Step 7 - Implement printTemperatures()
 // Print all stored temperatures in a formatted table
