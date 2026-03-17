@@ -5,19 +5,25 @@ using namespace std;
 // TODO: Step 1 - Define the struct TemperatureRecord
 // It should contain two integer fields: day and temperature.
 
+struct TemperatureRecord {
+    int day; 
+    int temperature;
+};
 
 // Constants
 const int MAX_DAYS = 31;
 
 // Function Prototypes
-void readTemperatures(???); // TODO: Fix the parameters
-void printTemperatures(const ???);
-TemperatureRecord findMin(const ???);
-TemperatureRecord findMax(const ???);
-double findAverage(const ???);
+void readTemperatures(TemperatureRecord, int); // TODO: Fix the parameters
+void printTemperatures(const TemperatureRecord, int);
+TemperatureRecord findMin(const TemperatureRecord, int);
+TemperatureRecord findMax(const TemperatureRecord, int);
+double findAverage(const TemperatureRecord, int);
 
 int main() {
     // TODO: Step 2 - Declare an array of TemperatureRecord structs (MAX_DAYS size)
+
+    TemperatureRecord temp[MAX_DAYS];
     
     int size = 0;  // Actual number of records read
 
