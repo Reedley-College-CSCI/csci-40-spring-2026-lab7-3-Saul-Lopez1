@@ -16,9 +16,9 @@ const int MAX_DAYS = 31;
 // Function Prototypes
 void readTemperatures(TemperatureRecord arr[], int& size); // TODO: Fix the parameters
 void printTemperatures(const TemperatureRecord arr[], int size);
-//TemperatureRecord findMin(const TemperatureRecord, int);
-//TemperatureRecord findMax(const TemperatureRecord, int);
-//double findAverage(const TemperatureRecord, int);
+int findMin(const TemperatureRecord array[], int size);
+int findMax(const TemperatureRecord array[], int size);
+double findAverage(const TemperatureRecord array[], int size);
 
 int main() {
     // TODO: Step 2 - Declare an array of TemperatureRecord structs (MAX_DAYS size)
@@ -36,6 +36,15 @@ int main() {
     printTemperatures(temperatures, size);
 
     // TODO: Step 5 - Compute and display min, max, and average temperature
+
+    int min = findMin(temperatures, size);
+    cout << "Lowest temperature: " << min << endl;
+
+    int max = findMax(temperatures, size);
+    cout << "Highest temperature: " << max << endl;
+
+    int avg = findAverage(temperatures, size);
+    cout << "Average temperature: " << avg;
 
     return 0;
 }
@@ -62,15 +71,48 @@ void readTemperatures(TemperatureRecord arr[], int& size) {
 void printTemperatures(const TemperatureRecord arr[], int size) {
     cout << "Day     Temp" << endl;
     for (int i = 0; i < size; i++) {
-        cout << arr[i].day << "     " << arr[i].temperature << endl;
+        cout << arr[i].day << "       " << arr[i].temperature << endl;
     }
 }
 
 // TODO: Step 8 - Implement findMin()
 // Return the TemperatureRecord with the lowest temperature
 
+int findMin(const TemperatureRecord array[], int size) {
+    int min = array[0].temperature;
+    for (int i = 0; i < size; i++) {
+        if (array[i].temperature < min) {
+            min = array[i].temperature;
+        }
+    }
+
+    return min;
+}
+
 // TODO: Step 9 - Implement findMax()
 // Return the TemperatureRecord with the highest temperature
 
+int findMax(const TemperatureRecord array[], int size) {
+    int max = array[0].temperature;
+    for (int i = 0; i < size; i++) {
+        if (array[i].temperature > max) {
+            max = array[i].temperature;
+        }
+    }
+
+    return max;
+}
+
 // TODO: Step 10 - Implement findAverage()
 // Compute and return the average temperature
+
+double findAverage(const TemperatureRecord array[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += array[i].temperature;
+    }
+
+    int avg = sum / size;
+
+    return avg;
+}
