@@ -11,9 +11,11 @@ struct TemperatureRecord {
 };
 
 // Constants
+
 const int MAX_DAYS = 31;
 
 // Function Prototypes
+
 void readTemperatures(TemperatureRecord arr[], int& size); // TODO: Fix the parameters
 void printTemperatures(const TemperatureRecord arr[], int size);
 int findMin(const TemperatureRecord array[], int size);
